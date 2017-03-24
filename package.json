@@ -1,29 +1,43 @@
 {
   "name": "ng-treetable",
-  "version": "1.0.5",
-  "description": "Tree table component for angular.",
-  "main": "index",
-  "typings": "index.d.ts",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/ddvkid/ng-treetable"
-  },
+  "version": "1.0.6",
+  "description": "Select component for angular.",
+  "main": "index.js",
+  "repository": "git@github.com/ddvkid/ng-treetable.git",
   "keywords": [
     "angular",
-    "ng",
-    "ngx",
-    "ng2"
+    "angular2",
+    "angular 2",
+    "treetable",
+    "tree",
+    "table",
+    "ng"
   ],
   "author": "Andrew Yang <ddvkid@gmail.com>",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/ddvkid/ng-treetable/issues"
-  },
-  "homepage": "https://github.com/ddvkid/ng-treetable",
   "scripts": {
+    "transpile": "ngc",
+    "package": "rollup -c",
+    "minify": "uglifyjs dist/bundles/treetable.umd.js --screw-ie8 --compress --mangle --comments --output dist/bundles/treetable.umd.min.js",
+    "build": "npm run transpile && npm run package && npm run minify"
   },
-  "dependencies": {
-  },
+  "dependencies": {},
   "devDependencies": {
+    "@angular/common": "2.4.2",
+    "@angular/compiler": "^2.4.2",
+    "@angular/compiler-cli": "^4.0.0",
+    "@angular/core": "2.4.2",
+    "@angular/forms": "2.4.2",
+    "@angular/http": "2.4.2",
+    "@angular/platform-browser": "2.4.2",
+    "@angular/platform-browser-dynamic": "2.4.2",
+    "@angular/router": "3.4.2",
+    "core-js": "^2.4.1",
+    "reflect-metadata": "^0.1.3",
+    "rollup": "^0.41.6",
+    "rxjs": "5.0.1",
+    "typescript": "^2.2.1",
+    "uglify-js": "^2.8.15",
+    "zone.js": "^0.7.2"
   }
 }
