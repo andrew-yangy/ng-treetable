@@ -36,7 +36,7 @@ import {AppComponent} from './app.component';
 })
 export class AppModule {}
 ```
-##Data type
+## Data type
 
 ````json
 {
@@ -68,7 +68,7 @@ export class AppModule {}
 }
 ````
 
-##Examples
+## Examples
 
 ### Basic
 ```html
@@ -116,7 +116,7 @@ export class AppModule {}
 | metaKeySelection   	| boolean 	| true     	| Defines how multiple items can be selected, when true metaKey needs to be pressed to select or unselect an item and when set to false selection of each item can be toggled individually. On touch enabled devices, metaKeySelection is turned off automatically. 	|
 
 
-##Events
+## Events
 | Name                | Parameters                                                                | Description                                                  |
 |---------------------|---------------------------------------------------------------------------|--------------------------------------------------------------|
 | onNodeSelect        | event.originalEvent: browser event  event.node: Selected node instance.   | Callback to invoke when a node is selected.                  |
