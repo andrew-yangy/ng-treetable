@@ -36,6 +36,64 @@ import {AppComponent} from './app.component';
 })
 export class AppModule {}
 ```
+##Data type
+
+````json
+{
+    "data":
+    [  
+        {  
+            "data":{  
+                "name":"Andrew",
+                "gender":"Male"
+            },
+            "children":[
+                {  
+                    "data":{  
+                        "name":"Andrewson",
+                        "gender":"Male"
+                    },
+                    "children":[  
+                        {  
+                            "data":{  
+                                "name":"Eric",
+                                "gender":"30kb"
+                            }
+                        }                       
+                    ]
+                }
+            ]
+        }
+    ]
+}
+````
+
+##Examples
+
+### Basic
+```html
+<ay-treeTable [value]="data">
+    <ay-column field="name" header="Name"></ay-column>
+    <ay-column field="gender" header="Gender"></ay-column>
+</ay-treeTable>
+```
+### Paginator
+
+```html
+<ay-treeTable [value]="data" [rows]="10" [paginator]="true" [pageLinks]="3" [rowsPerPageOptions]="[5,10,20]">
+    <ay-column field="name" header="Name"></ay-column>
+    <ay-column field="gender" header="Gender"></ay-column>
+</ay-treeTable>
+```
+### Filter
+```html
+<input #gb type="text" pInputText size="50" placeholder="Global Filter">
+<ay-treeTable [value]="data" [globalFilter]="gb" [rows]="10" [paginator]="true" [pageLinks]="3" [rowsPerPageOptions]="[5,10,20]">
+    <ay-column field="name" header="Name"></ay-column>
+    <ay-column field="gender" header="Gender"></ay-column>
+</ay-treeTable>
+```
+
 
 ## Input properties
 | Name               	| Type    	| Default  	| Description                                                                                                                                                                                                                                                       	|
@@ -57,3 +115,11 @@ export class AppModule {}
 | styleClass         	| string  	| null     	| Style class of the component.                                                                                                                                                                                                                                     	|
 | metaKeySelection   	| boolean 	| true     	| Defines how multiple items can be selected, when true metaKey needs to be pressed to select or unselect an item and when set to false selection of each item can be toggled individually. On touch enabled devices, metaKeySelection is turned off automatically. 	|
 
+##Events
+| Name                | Parameters                                                                | Description                                                  |
+|---------------------|---------------------------------------------------------------------------|--------------------------------------------------------------|
+| onNodeSelect        | event.originalEvent: browser event  event.node: Selected node instance.   | Callback to invoke when a node is selected.                  |
+| onNodeUnselect      | event.originalEvent: browser event  event.node: Unselected node instance. | Callback to invoke when a node is unselected.                |
+| onNodeExpand        | event.originalEvent: browser event event.node: Expanded node instance.    | Callback to invoke when a node is expanded.                  |
+| onNodeCollapse      | event.originalEvent: browser event  event.node: Collapsed node instance.  | Callback to invoke when a node is collapsed.                 |
+| onContextMenuSelect | event.originalEvent: browser event  event.node: Selected node instance.   | Callback to invoke when a node is selected with right click. |
