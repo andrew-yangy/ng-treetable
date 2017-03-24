@@ -1,18 +1,27 @@
 {
   "name": "ng-treetable",
-  "version": "1.0.0-beta.1",
-  "description": "Select component for angular.",
-  "main": "index.js",
-  "repository": "git@github.com/ddvkid/ng-treetable.git",
+  "version": "1.0.5",
+  "description": "Tree table component for angular.",
+  "main": "index",
+  "typings": "index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ddvkid/ng-treetable"
+  },
   "keywords": [
     "angular",
-    "treetable",
-    "tree",
-    "table",
-    "ng"
+    "ng",
+    "ngx",
+    "ng2"
   ],
   "author": "Andrew Yang <ddvkid@gmail.com>",
   "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ddvkid/ng-treetable/issues"
+  },
+  "homepage": "https://github.com/ddvkid/ng-treetable",
+  "scripts": {
+  },
   "dependencies": {
   },
   "devDependencies": {
