@@ -1,6 +1,5 @@
 [![Angular 2 Style Guide](https://mgechev.github.io/angular2-style-guide/images/badge.svg)](https://github.com/mgechev/angular2-style-guide)
 [![MIT license](http://img.shields.io/badge/license-MIT-brightgreen.svg)](http://opensource.org/licenses/MIT)
-[![Dependency Status](https://david-dm.org/preboot/angular-library-seed/status.svg)](https://david-dm.org/preboot/angular-library-seed#info=dependencies) [![devDependency Status](https://david-dm.org/preboot/angular-library-seed/dev-status.svg)](https://david-dm.org/preboot/angular-library-seed#info=devDependencies)
 
 ## Tree Table component for Angular
 A tree table component for Angular, based on [Primeng treetable](https://github.com/primefaces/primeng/tree/master/components/treetable).
