@@ -1,17 +1,21 @@
 {
   "name": "ng-treetable",
-  "version": "0.0.0",
-  "license": "MIT",
-  "scripts": {
-    "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
-    "test": "ng test",
-    "lint": "ng lint",
-    "e2e": "ng e2e"
-  },
-  "private": true,
+  "version": "1.0.0-beta.1",
+  "description": "Select component for angular.",
+  "main": "index.js",
+  "repository": "git@github.com/ddvkid/ng-treetable.git",
+  "keywords": [
+    "angular",
+    "treetable",
+    "tree",
+    "table",
+    "ng"
+  ],
+  "author": "Andrew Yang <ddvkid@gmail.com>",
+  "license": "ISC",
   "dependencies": {
+  },
+  "devDependencies": {
     "@angular/common": "^2.4.0",
     "@angular/compiler": "^2.4.0",
     "@angular/core": "^2.4.0",
@@ -22,11 +26,7 @@
     "@angular/router": "^3.4.0",
     "core-js": "^2.4.1",
     "rxjs": "^5.1.0",
-    "zone.js": "^0.7.6"
-  },
-  "devDependencies": {
-    "@angular/cli": "1.0.0-rc.1",
-    "@angular/compiler-cli": "^2.4.0",
+    "zone.js": "^0.7.6",
     "@types/jasmine": "2.5.38",
     "@types/node": "~6.0.60",
     "codelyzer": "~2.0.0",
