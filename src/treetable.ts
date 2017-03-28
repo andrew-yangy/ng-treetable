@@ -128,7 +128,8 @@ export class TreeTable {
     globalFilterFunction: any;
 
     constructor(public renderer:Renderer) { }
-    onRowClick(event: MouseEvent, node: TreeNode) {
+    onRowClick(event: MouseEvent, node: TreeNode)
+    {
         let eventTarget = (<Element> event.target);
         if(eventTarget.className && eventTarget.className.indexOf('ui-treetable-toggler') === 0) {
             return;
@@ -424,54 +425,36 @@ export class TreeTable {
 
         this.loading = false;
     }
-    isFiltered(node: TreeNode) {
-        let match = false;
-        if(this.globalFilter && this.globalFilter.value) {
-            this.columns.toArray().map(col=>{
-                if(!match) {
-                    match = this.filterConstraints['contains'](this.resolveFieldData(node.data, col.field), this.globalFilter.value)
-                }
-            })
+    filterFields(object) {
+        let res = false;
+        this.columns.toArray().map(col=>{
+            if(!res) {
+                res = object[col.field].toLowerCase().includes(this.globalFilter.value.toLowerCase())
+            }
+        });
+        return res;
+    }
+    filterChildren(children,parent) {
+        let res = false;
+        if(children){
+            children.map(child=>{
+                let _fields = this.filterFields(child.data);
+                let _children = this.filterChildren(child.children,child);
+                res = _fields || _children || res;
+            });
+            parent.expanded = res;
         }
-        return match;
+        return res;
+    }
+    isFiltered(node) {
+        return this.filterFields(node.data) || this.filterChildren(node.children,node)
     }
     filter() {
         this.first = 0;
 
-        this.filteredValue = [];
-
-        for(let i = 0; i < this.value.length; i++) {
-            let rowMatch = false;
-            let childrenMatch = false;
-            let grandChildrenMatch = false;
-            this.columns.toArray().map(col=>{
-                if(this.globalFilter && !rowMatch) {
-                    rowMatch = this.filterConstraints['contains'](this.resolveFieldData(this.value[i].data, col.field), this.globalFilter.value);
-                }
-                if(this.globalFilter && this.value[i].children) {
-                    this.value[i].children.map(one=>{
-                        if(this.filterConstraints['contains'](this.resolveFieldData(one.data, col.field), this.globalFilter.value)) {
-                            childrenMatch = true;
-                            this.value[i].expanded = true;
-                            one.selected = true;
-                        }
-                        if(this.globalFilter && one.children) {
-                            one.children.map(grandchild=>{
-                                if(this.filterConstraints['contains'](this.resolveFieldData(grandchild.data, col.field), this.globalFilter.value)) {
-                                    grandChildrenMatch = true;
-                                    this.value[i].expanded = true;
-                                    one.expanded = true;
-                                    grandchild.selected = true;
-                                }
-                            });
-                        }
-                    });
-                }
-            });
-            if(rowMatch || childrenMatch || grandChildrenMatch) {
-                this.filteredValue.push(this.value[i]);
-            }
-        }
+        this.filteredValue = this.value.filter(val=>{
+            return this.filterFields(val.data) || this.filterChildren(val.children,val);
+        });
 
         if(this.filteredValue.length === this.value.length) {
             this.filteredValue = null;

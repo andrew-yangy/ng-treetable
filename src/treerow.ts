@@ -8,7 +8,7 @@ import {TreeTable} from "./treetable";
 @Component({
     selector: '[pTreeRow]',
     template: `
-        <div class="ui-treetable-row" [ngClass]="{'ui-state-highlight':isSelected() || treeTable.isFiltered(node),'ui-treetable-row-selectable':treeTable.selectionMode && node.selectable !== false}">
+        <div *ngIf="treeTable.isFiltered(node)" class="ui-treetable-row" [ngClass]="{'ui-state-highlight':isSelected() ,'ui-treetable-row-selectable':treeTable.selectionMode && node.selectable !== false}">
             <td *ngFor="let col of treeTable.columns; let i=index" [ngStyle]="col.style" [class]="col.styleClass" 
             [style.display]="col.hidden ? 'none' : 'table-cell'"
             (click)="onRowClick($event)" (touchend)="onRowTouchEnd()" (contextmenu)="onRowRightClick($event)">
@@ -17,10 +17,13 @@ import {TreeTable} from "./treetable";
                     (click)="toggle($event)"
                     [title]="node.expanded ? labelCollapse : labelExpand">
                 </a>
-                <div class="ui-chkbox ui-treetable-checkbox" *ngIf="treeTable.selectionMode == 'checkbox' && i==0"><div class="ui-chkbox-box ui-widget ui-corner-all ui-state-default">
-                    <span class="ui-chkbox-icon ui-c fa" 
-                        [ngClass]="{'fa-check':isSelected(),'fa-minus':node.partialSelected}"></span></div></div
-                ><span *ngIf="!col.template">{{resolveFieldData(node.data,col.field)}}</span>
+                <div class="ui-chkbox ui-treetable-checkbox" *ngIf="treeTable.selectionMode == 'checkbox' && i==0">
+                    <div class="ui-chkbox-box ui-widget ui-corner-all ui-state-default">
+                        <span class="ui-chkbox-icon ui-c fa" 
+                            [ngClass]="{'fa-check':isSelected(),'fa-minus':node.partialSelected}"></span>
+                    </div>
+                </div>
+                <span *ngIf="!col.template">{{resolveFieldData(node.data,col.field)}}</span>
                 <ay-columnBodyTemplateLoader [column]="col" [rowData]="node" *ngIf="col.template"></ay-columnBodyTemplateLoader>
             </td>
         </div>
