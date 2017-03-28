@@ -358,7 +358,7 @@ export class TreeTable {
         if(this.immutable) this.handleDataChange();
     }
     ngAfterViewInit() {
-        if(this.globalFilter) {
+        if(this.globalFilter && this.value) {
             this.globalFilterFunction = this.renderer.listen(this.globalFilter, 'keyup', () => {
                 this.filterTimeout = setTimeout(() => {
                     this.filter();
@@ -428,7 +428,7 @@ export class TreeTable {
     filterFields(object) {
         let res = false;
         this.columns.toArray().map(col=>{
-            if(!res) {
+            if(!res && object[col.field]) {
                 res = object[col.field].toLowerCase().includes(this.globalFilter.value.toLowerCase())
             }
         });
@@ -455,10 +455,6 @@ export class TreeTable {
         this.filteredValue = this.value.filter(val=>{
             return this.filterFields(val.data) || this.filterChildren(val.children,val);
         });
-
-        if(this.filteredValue.length === this.value.length) {
-            this.filteredValue = null;
-        }
 
         if(this.paginator) {
             this.totalRecords = this.filteredValue ? this.filteredValue.length: this.value ? this.value.length: 0;
