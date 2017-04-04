@@ -383,9 +383,7 @@ export class TreeTable {
     }
 
     updatePaginator() {
-        //total records
         this.totalRecords = this.lazy ? this.totalRecords : (this.value ? this.value.length: 0);
-        //first
         if(this.totalRecords && this.first >= this.totalRecords) {
             let numberOfPages = Math.ceil(this.totalRecords/this.rows);
             this.first = Math.max((numberOfPages-1) * this.rows, 0);
