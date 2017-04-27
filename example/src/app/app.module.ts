@@ -5,7 +5,7 @@ import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import {BasicTreeComponent} from "./basic/basic.component";
-import {TreeTableModule} from "../../../src/treetable";
+import {TreeTableModule} from "ng-treetable";
 
 @NgModule({
   declarations: [
