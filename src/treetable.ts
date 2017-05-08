@@ -445,7 +445,11 @@ export class TreeTable {
         return res;
     }
     isFiltered(node) {
-        return this.filterFields(node.data) || this.filterChildren(node.children,node)
+        if(this.globalFilter){
+            return this.filterFields(node.data) || this.filterChildren(node.children,node)
+        }else {
+            return true;
+        }
     }
     filter() {
         this.first = 0;
