@@ -8,7 +8,8 @@ import {TreeTable} from "./treetable";
 @Component({
     selector: '[pTreeRow]',
     template: `
-        <div *ngIf="treeTable.isFiltered(node)" class="ui-treetable-row" [ngClass]="{'ui-state-highlight':isSelected() ,'ui-treetable-row-selectable':treeTable.selectionMode && node.selectable !== false}">
+        <div *ngIf="treeTable.isFiltered(node)" class="ui-treetable-row" [class]="treeTable.getRowStyleClass(node)"
+            [ngClass]="{'ui-state-highlight':isSelected() ,'ui-treetable-row-selectable':treeTable.selectionMode && node.selectable !== false}">
             <td *ngFor="let col of treeTable.columns; let i=index" [ngStyle]="col.style" [class]="col.styleClass" 
             [style.display]="col.hidden ? 'none' : 'table-cell'"
             (click)="onRowClick($event)" (touchend)="onRowTouchEnd()" (contextmenu)="onRowRightClick($event)">

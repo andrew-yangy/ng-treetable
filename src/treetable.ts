@@ -99,6 +99,8 @@ export class TreeTable {
 
     @Input() immutable: boolean;
 
+    @Input() rowStyleClass: Function;
+
     @Output() selectionChange: EventEmitter<any> = new EventEmitter();
 
     @Output() onNodeSelect: EventEmitter<any> = new EventEmitter();
@@ -340,6 +342,17 @@ export class TreeTable {
 
     isCheckboxSelectionMode() {
         return this.selectionMode && this.selectionMode == 'checkbox';
+    }
+
+    getRowStyleClass(rowData: any) {
+        let styleClass = '';
+        if(this.rowStyleClass) {
+            let rowClass = this.rowStyleClass.call(this, rowData);
+            if(rowClass) {
+                styleClass += ' ' + rowClass;
+            }
+        }
+        return styleClass;
     }
 
     hasFooter() {
