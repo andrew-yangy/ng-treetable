@@ -440,7 +440,7 @@ export class TreeTable {
         let res = false;
         this.columns.toArray().map(col=>{
             if(!res && object[col.field]) {
-                res = object[col.field].toLowerCase().includes(this.globalFilter.value.toLowerCase())
+                res = object[col.field].toString().toLowerCase().includes(this.globalFilter.value.toString().toLowerCase())
             }
         });
         return res;
@@ -488,7 +488,7 @@ export class TreeTable {
                 return false;
             }
 
-            let filterValue = filter.toLowerCase();
+            let filterValue = filter.toString().toLowerCase();
             return value.toString().toLowerCase().slice(0, filterValue.length) === filterValue;
         },
 
