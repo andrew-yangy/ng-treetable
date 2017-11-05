@@ -8,7 +8,8 @@ A tree table component for Angular, based on [Primeng treetable](https://github.
 ```bash
 npm install --save ng-treetable
 ```
-
+## Demo
+[Live Demo](https://ddvkid.github.io/ng-treetable/)
 ## Configuration
 ##### Angular cli
 
