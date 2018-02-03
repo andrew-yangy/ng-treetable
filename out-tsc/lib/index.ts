@@ -1,0 +1,1 @@
+export { TreeTableModule } from './src/component/treetable'

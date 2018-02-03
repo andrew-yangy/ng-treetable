@@ -4,7 +4,7 @@ import {Component} from '@angular/core';
     selector: 'demo-app',
     template: `
         <input #gb type="text" pInputText size="50" placeholder="Global Search">
-        <ay-treeTable [value]="nodes.data" [globalFilter]="gb" selectionMode="single"
+        <ay-treeTable [value]="nodes.data" [globalFilter]="gb" selectionMode="single" [(selection)]="selectedRows"
                       (onNodeSelect)="nodeSelect($event)" [tableStyle]="{'table-layout': 'auto'}">
             <ay-column field="name" header="Name">
                 <ng-template let-col let-node="rowData" pTemplate="body">
@@ -18,6 +18,7 @@ import {Component} from '@angular/core';
     `
 })
 export class AppComponent {
+    selectedRows: any[];
     constructor() {
     }
 
