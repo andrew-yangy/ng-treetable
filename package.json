@@ -1,6 +1,6 @@
 {
     "name": "ng-treetable",
-    "version": "1.3.2",
+    "version": "1.3.3",
     "description": "Tree table component for angular 2+.",
     "main": "./bundles/ng-treetable.umd.js",
     "module": "./ng-treetable.es5.js",
